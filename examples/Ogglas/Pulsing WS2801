@@ -1,0 +1,79 @@
+#include "FastSPI_LED2.h"
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//Pulsing WS2801 LEDs in white, blue and black
+//////////////////////////////////////////////////
+
+#define NUM_LEDS 7
+
+// Data pin that led data will be written out over
+#define DATA_PIN 2
+// Clock pin only needed for SPI based chipsets when not using hardware SPI
+#define CLOCK_PIN 3
+
+CRGB leds[NUM_LEDS];
+
+void setup() {
+	// sanity check delay - allows reprogramming if accidently blowing power w/leds
+   	delay(2000);
+   
+        LEDS.setBrightness(64);
+
+       FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+
+   leds[0] = CRGB::Black; 
+   leds[1] = CRGB::Black;
+   leds[2] = CRGB::Black;
+   leds[3] = CRGB::Black;
+   leds[4] = CRGB::Black;
+   leds[5] = CRGB::Black;
+   leds[6] = CRGB::Black;
+}
+
+void loop() {
+   int randNumber;
+   int randNumber2;
+   int randNumber3;
+   int randNumber4;
+   int randNumber5;
+   int randNumber6;
+   int randNumber7;
+   randNumber = random(0, 7);
+   randNumber2 = random(0, 7);
+   randNumber3 = random(0, 7);
+   randNumber4 = random(0, 7);
+   randNumber5 = random(0, 7);
+   randNumber6 = random(0, 7);
+   randNumber7 = random(0, 7);
+   leds[randNumber] = CRGB::White;
+   leds[randNumber2] = CRGB::Black;
+   leds[randNumber3] = CRGB::Blue;
+   leds[randNumber4] = CRGB::White;
+   leds[randNumber5] = CRGB::Black;
+   leds[randNumber6] = CRGB::Blue;
+   leds[randNumber6] = CRGB::White;
+for(int x = 0; x < 256; x++) { 	
+		LEDS.setBrightness(x);
+                FastLED.show();
+                delay(4);
+		}  
+for(int x = 0; x < 192; x++) { 	
+		LEDS.setBrightness(256 - x);
+                FastLED.show();
+                delay(4);
+		}
+}
+
+//Not implemented code
+/*
+void randomLed(int led)
+{
+  int randNumber;
+     if (randNumber == 1)
+   {
+     leds[randNumber] = CRGB::White;
+   }
+}
+*/
