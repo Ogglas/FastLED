@@ -19,17 +19,18 @@ void setup() {
 	// sanity check delay - allows reprogramming if accidently blowing power w/leds
    	delay(2000);
    
-        LEDS.setBrightness(64);
+        LEDS.setBrightness(256);
 
        FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 
-   leds[0] = CRGB::Black; 
-   leds[1] = CRGB::Black;
-   leds[2] = CRGB::Black;
-   leds[3] = CRGB::Black;
-   leds[4] = CRGB::Black;
-   leds[5] = CRGB::Black;
-   leds[6] = CRGB::Black;
+   leds[0] = CRGB::Blue; 
+   leds[1] = CRGB::Blue;
+   leds[2] = CRGB::Blue;
+   leds[3] = CRGB::Blue;
+   leds[4] = CRGB::Blue;
+   leds[5] = CRGB::Blue;
+   leds[6] = CRGB::Blue;
+   delay(1000);
 }
 
 void loop() {
@@ -48,10 +49,10 @@ void loop() {
    randNumber6 = random(0, 7);
    randNumber7 = random(0, 7);
    leds[randNumber] = CRGB::White;
-   leds[randNumber2] = CRGB::Black;
+   leds[randNumber2] = CRGB::Blue;
    leds[randNumber3] = CRGB::Blue;
    leds[randNumber4] = CRGB::White;
-   leds[randNumber5] = CRGB::Black;
+   leds[randNumber5] = CRGB::Blue;
    leds[randNumber6] = CRGB::Blue;
    leds[randNumber6] = CRGB::White;
 for(int x = 0; x < 256; x++) { 	
