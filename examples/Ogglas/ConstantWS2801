@@ -1,0 +1,38 @@
+#include "FastSPI_LED2.h"
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//Constant shining WS2801 LEDs in cyan
+//////////////////////////////////////////////////
+
+#define NUM_LEDS 7
+
+// Data pin that led data will be written out over
+#define DATA_PIN 2
+// Clock pin only needed for SPI based chipsets when not using hardware SPI
+#define CLOCK_PIN 3
+
+CRGB leds[NUM_LEDS];
+
+void setup() {
+	// sanity check delay - allows reprogramming if accidently blowing power w/leds
+   	delay(2000);
+   
+       LEDS.setBrightness(255);
+
+       FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+
+}
+void loop() {
+  
+   leds[0] = CRGB::Cyan; 
+   leds[1] = CRGB::Cyan;
+   leds[2] = CRGB::Cyan;
+   leds[3] = CRGB::Cyan;
+   leds[4] = CRGB::Cyan;
+   leds[5] = CRGB::Cyan;
+   leds[6] = CRGB::Cyan;
+   FastLED.show();
+   delay(1000);
+}
